@@ -5,8 +5,7 @@ const app = express();
 app.use(express.json());
 
 // Connessione sicura tramite variabile d'ambiente
-const mongoURI = "mongodb+srv://admin_user:6cmk1plqublGykLv@cluster0.syaiyhy.mongodb.net/?appName=Cluster0";
-//const mongoURI = process.env.MONGO_URI;
+const mongoURI = process.env.MONGO_URI;
 
 mongoose.connect(mongoURI)
   .then(() => console.log("Database connesso con successo"))
