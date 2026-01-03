@@ -22,8 +22,15 @@ app.get('/', (req, res) => res.send("API Prodotti Online"));
 
 // 1. GET - Lista prodotti
 app.get('/prodotti', async (req, res) => {
-  const lista = await Prodotto.find();
-  res.json(lista);
+  try {
+    const lista = await Prodotto.find();
+    res.json(lista);
+  } catch (err) {
+    res.status(500).json({
+      errore: "Errore nel recupero dei prodotti",
+      dettaglio: err.message
+    });
+  }
 });
 
 // 2. POST - Aggiungi prodotto
